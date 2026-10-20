@@ -1,0 +1,6 @@
+{
+  "name": "Tanzim Agro World – Organic Honey, Fruits, Pickles & Vegetables",
+  "description": "Direct farm-to-table organic e-commerce store for tanzimagroworld.com offering pure Sundarbans honey (মধু), seasonal fruits (ফল), artisanal pickles (আচার), and fresh vegetables (সবজি) with bilingual English/Bangla support, offline PWA capabilities, multi-device sync, and an integrated payment gateway.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

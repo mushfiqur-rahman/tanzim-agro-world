@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#14532d" />
+  <circle cx="256" cy="256" r="184" fill="#166534" stroke="#86efac" stroke-width="6" stroke-opacity="0.4" />
+  <!-- Botanical Leaf & Honey Drop Motif -->
+  <path d="M256 108C256 108 164 196 164 276C164 326.8 205.2 368 256 368C306.8 368 348 326.8 348 276C348 196 256 108 256 108Z" fill="#facc15" fill-opacity="0.18" />
+  <path d="M180 316C180 228 256 144 336 144C336 224 268 316 180 316Z" fill="#4ade80" />
+  <path d="M332 316C332 248 276 184 204 184C204 252 260 316 332 316Z" fill="#bbf7d0" fill-opacity="0.88" />
+  <path d="M256 156V384" stroke="#fef08a" stroke-width="14" stroke-linecap="round" />
+  <circle cx="256" cy="126" r="16" fill="#facc15" />
+</svg>

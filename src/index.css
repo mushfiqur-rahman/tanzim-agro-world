@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Montserrat', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-bangla: 'Hind Siliguri', 'Montserrat', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg-canvas: #fafaf7;
+    --bg-surface: #f3f2ea;
+    --bg-elevated: #ffffff;
+    --text-primary: #1c1917;
+    --text-secondary: #44403c;
+    --text-muted: #57534e;
+    --accent-green: #14532d;
+    --accent-text: #14532d;
+    --border-subtle: #e7e5e4;
+  }
+
+  html.dark {
+    --bg-canvas: #0b140e;
+    --bg-surface: #122117;
+    --bg-elevated: #182b1f;
+    --text-primary: #f5f5f4;
+    --text-secondary: #d6d3d1;
+    --text-muted: #a8a29e;
+    --accent-green: #22c55e;
+    --accent-text: #86efac;
+    --border-subtle: #1e3a28;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* High-contrast accessible focus rings */
+  *:focus-visible {
+    outline: 3px solid #15803d;
+    outline-offset: 2px;
+  }
+
+  html.dark *:focus-visible {
+    outline: 3px solid #4ade80;
+    outline-offset: 2px;
+  }
+}
+
+.font-bangla {
+  font-family: var(--font-bangla);
+}
+
+.font-english {
+  font-family: var(--font-sans);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
