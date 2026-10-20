@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { X, ShoppingBag, Check, ShieldCheck, MapPin, Star } from 'lucide-react';
 import {
   calculateVariantPrice,
@@ -7,6 +7,7 @@ import {
   type Product,
 } from '../utils/storeLogic';
 import { ProductIllustration } from './ProductIllustration';
+import { ProductReviewsSection } from './ProductReviewsSection';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -28,6 +29,23 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   );
   const [quantity, setQuantity] = useState<number>(1);
   const [justAdded, setJustAdded] = useState<boolean>(false);
+  const [liveRating, setLiveRating] = useState<number>(product?.rating || 5.0);
+  const [liveReviewCount, setLiveReviewCount] = useState<number>(product?.reviewCount || 0);
+
+  useEffect(() => {
+    if (product) {
+      setSelectedVariantId(product.variants[1]?.id || product.variants[0]?.id || '');
+      setQuantity(1);
+      setJustAdded(false);
+      setLiveRating(product.rating);
+      setLiveReviewCount(product.reviewCount);
+    }
+  }, [product]);
+
+  const handleStatsChange = useCallback((avgRating: number, totalCount: number) => {
+    setLiveRating(avgRating);
+    setLiveReviewCount(totalCount);
+  }, []);
 
   if (!product) return null;
 
@@ -43,12 +61,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-3 sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="pdp-modal-title"
     >
-      <div className="relative w-full max-w-4xl rounded-xl bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[var(--border-subtle)] shadow-2xl overflow-hidden my-8">
+      <div className="relative w-full max-w-4xl rounded-xl bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[var(--border-subtle)] shadow-2xl overflow-hidden my-4 sm:my-8">
         <button
           type="button"
           onClick={onClose}
@@ -59,7 +77,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 items-stretch">
-          {/* Left: Sticky Visual Showcase */}
+          {/* Left: Visual Showcase */}
           <div className="bg-[var(--bg-surface)] p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[var(--border-subtle)]">
             <div className="aspect-[4/3] w-full rounded-lg overflow-hidden">
               <ProductIllustration
@@ -109,10 +127,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   {language === 'bn' ? product.originBn : product.originEn}
                 </span>
                 <span aria-hidden="true">·</span>
-                <span className="inline-flex items-center gap-1 tabular-nums">
+                <a
+                  href="#pdp-reviews-heading"
+                  className="inline-flex items-center gap-1 tabular-nums font-semibold hover:text-[#097F00]"
+                >
                   <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" aria-hidden="true" />
-                  {product.rating.toFixed(1)} ({product.reviewCount})
-                </span>
+                  {liveRating.toFixed(1)} ({liveReviewCount})
+                </a>
               </div>
 
               <h2
@@ -253,6 +274,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Customer Reviews & Star Rating Component */}
+        <ProductReviewsSection
+          product={product}
+          language={language}
+          onStatsChange={handleStatsChange}
+        />
       </div>
     </div>
   );

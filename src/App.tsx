@@ -1105,11 +1105,24 @@ export default function App() {
               </div>
             )}
 
-            <div className="px-4 py-3 border-t border-stone-200 dark:border-emerald-900/60 bg-stone-50 dark:bg-[#0b150e] flex items-center justify-between gap-2">
+            <div className="px-4 py-3 border-t border-stone-200 dark:border-emerald-900/60 bg-stone-50 dark:bg-[#0b150e] flex flex-wrap items-center justify-between gap-2">
               <PWAInstallButton language={language} />
-              <span className="text-[11px] text-stone-500 dark:text-stone-400">
-                +880 1700-000000
-              </span>
+              <div className="flex items-center gap-3 text-[11px] font-semibold">
+                <a
+                  href="tel:01757876606"
+                  className="text-stone-700 dark:text-stone-300 hover:text-[#097F00]"
+                >
+                  01757876606
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61579066244450"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#097F00] dark:text-emerald-400 hover:underline"
+                >
+                  Facebook
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -2090,7 +2103,7 @@ export default function App() {
          ===================================================================== */}
       <footer className="bg-[#f8faf7] dark:bg-[#08100b] border-t border-stone-200 dark:border-emerald-900/50 text-xs text-stone-600 dark:text-stone-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Col 1: Brand & Mission */}
+          {/* Col 1: Brand, Address, Phone & Official Facebook */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-md bg-[#097F00] flex items-center justify-center text-white font-bold">
@@ -2105,9 +2118,37 @@ export default function App() {
                 ? 'খাঁটি মধু (মধু), মৌসুমি ফল (ফল), ঐতিহ্যবাহী আচার (আচার), তাজা সবজি (সবজি) এবং নিত্যপ্রয়োজনীয় অর্গানিক খাদ্যের বিশ্বস্ত অনলাইন স্টোর (tanzimagroworld.com)।'
                 : 'Your trusted online organic grocery store (tanzimagroworld.com) for pure honey (মধু), fresh fruits (ফল), artisanal pickles (আচার), and farm vegetables (সবজি).'}
             </p>
-            <p className="text-[11px] text-stone-500">
-              GEO Hub: Sector 6, Uttara, Dhaka-1230 (23.8103° N, 90.4125° E)
-            </p>
+            <div className="space-y-1 text-[11px] text-stone-700 dark:text-stone-300">
+              <p className="font-semibold">
+                {language === 'bn'
+                  ? 'ঠিকানা: তালা, সাতক্ষীরা, সাতক্ষীরা, বাংলাদেশ, ৯২২০'
+                  : 'Address: Tala, Satkhira, Satkhira, Bangladesh, 9220'}
+              </p>
+              <p className="font-semibold">
+                {language === 'bn' ? 'ফোন: ' : 'Phone: '}
+                <a
+                  href="tel:01757876606"
+                  className="text-[#097F00] dark:text-emerald-400 hover:underline tabular-nums"
+                >
+                  01757876606
+                </a>
+              </p>
+            </div>
+            <div className="pt-1">
+              <a
+                href="https://www.facebook.com/profile.php?id=61579066244450"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xs bg-[#1877F2] hover:bg-[#166fe5] text-white text-xs font-bold transition-colors"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                </svg>
+                <span>
+                  {language === 'bn' ? 'ফেসবুক পেইজ ভিজিট করুন' : 'Follow us on Facebook'}
+                </span>
+              </a>
+            </div>
           </div>
 
           {/* Col 2: Shop Links */}
@@ -2203,13 +2244,36 @@ export default function App() {
           {/* Col 4: Information & Verified Payment Banner */}
           <div className="space-y-2.5">
             <h2 className="text-sm font-bold text-stone-900 dark:text-white">
-              {language === 'bn' ? 'তথ্য ও নীতিমালা (Information)' : 'Information'}
+              {language === 'bn' ? 'যোগাযোগ ও তথ্য (Contact & Info)' : 'Contact & Information'}
             </h2>
             <ul className="space-y-2">
-              <li>BCSIR &amp; BARI Quality Certificates</li>
-              <li>Steadfast &amp; 60-Min Cold-Chain Courier</li>
+              <li>
+                {language === 'bn'
+                  ? 'তালা, সাতক্ষীরা, সাতক্ষীরা, বাংলাদেশ, ৯২২০'
+                  : 'Tala, Satkhira, Satkhira, Bangladesh, 9220'}
+              </li>
+              <li>
+                {language === 'bn' ? 'হটলাইন: ' : 'Helpline: '}
+                <a
+                  href="tel:01757876606"
+                  className="font-bold text-stone-900 dark:text-white hover:text-[#097F00] tabular-nums"
+                >
+                  01757876606
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61579066244450"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#097F00] dark:text-emerald-400 font-semibold hover:underline"
+                >
+                  {language === 'bn'
+                    ? 'অফিসিয়াল ফেসবুক পেইজ'
+                    : 'Official Facebook Page'}
+                </a>
+              </li>
               <li>100% Chemical &amp; Formalin-Free Policy</li>
-              <li>Helpline: +880 1700-000000</li>
             </ul>
             <div className="pt-2">
               <img
@@ -2224,7 +2288,12 @@ export default function App() {
         </div>
 
         <div className="border-t border-stone-200 dark:border-emerald-900/50 py-4 px-4 sm:px-6 max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px]">
-          <p>© {new Date().getFullYear()} Tanzim Agro World (tanzimagroworld.com)</p>
+          <p>
+            © {new Date().getFullYear()} Tanzim Agro World (tanzimagroworld.com) · Tala, Satkhira, Bangladesh, 9220 ·{' '}
+            <a href="tel:01757876606" className="font-semibold hover:text-[#097F00]">
+              01757876606
+            </a>
+          </p>
           <p className="font-semibold text-[#097F00] dark:text-emerald-400">
             মধু • ফল • আচার • সবজি • Organic Food Bangladesh
           </p>

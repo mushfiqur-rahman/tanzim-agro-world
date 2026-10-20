@@ -47,10 +47,10 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
         createdAt: new Date().toISOString(),
         customer: {
           fullName: language === 'bn' ? 'মাহমুদুল হাসান' : 'Mahmudul Hasan',
-          phone: trimmed.startsWith('01') ? query.trim() : '01712345678',
-          division: 'Dhaka',
-          district: 'Dhaka Metro',
-          address: 'Sector 6, Uttara, Dhaka-1230',
+          phone: trimmed.startsWith('01') ? query.trim() : '01757876606',
+          division: 'Khulna',
+          district: 'Satkhira',
+          address: 'Tala, Satkhira, Satkhira, Bangladesh, 9220',
         },
         paymentMethod: 'bkash',
         paymentStatus: 'Paid via Gateway',
@@ -184,7 +184,7 @@ export const TrackOrderModal: React.FC<TrackOrderModalProps> = ({
                   {language === 'bn' ? '২. কোয়ালিটি প্যাকিং' : '2. Lab Batch Packed'}
                 </div>
                 <div className="text-[11px] opacity-80">
-                  {language === 'bn' ? 'উত্তরা এগ্রো হাব' : 'Uttara Agro Hub'}
+                  {language === 'bn' ? 'তালা, সাতক্ষীরা হাব' : 'Tala, Satkhira Hub'}
                 </div>
               </div>
 
